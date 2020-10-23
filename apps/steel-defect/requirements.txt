@@ -1,0 +1,10 @@
+dash
+plotly
+dash-bootstrap-components
+gunicorn
+numpy
+pandas
+scipy
+tensorflow-cpu==1.15
+Pillow
+scikit-learn

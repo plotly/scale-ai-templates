@@ -1,0 +1,38 @@
+city,city_ascii,lat,lng,country,iso2,iso3,admin_name,capital,population,id
+Schefferville,Schefferville,54.8,-66.8167,Canada,CA,CAN,Québec,,471,1124403382
+Port-Menier,Port-Menier,49.8226,-64.348,Canada,CA,CAN,Québec,,263,1124109240
+Chicoutimi,Chicoutimi,48.4333,-71.0667,Canada,CA,CAN,Québec,,53940,1124426272
+Dolbeau,Dolbeau,48.8666,-72.2333,Canada,CA,CAN,Québec,,13337,1124037070
+Rimouski,Rimouski,48.4337,-68.5167,Canada,CA,CAN,Québec,,35584,1124433645
+La Sarre,La Sarre,48.8,-79.2,Canada,CA,CAN,Québec,,7206,1124902252
+Mingan,Mingan,50.3018,-64.0173,Canada,CA,CAN,Québec,,588,1124305694
+Saint-Georges,Saint-Georges,46.1171,-70.6667,Canada,CA,CAN,Québec,,26149,1124154865
+Kuujjuaq,Kuujjuaq,58.1,-68.4,Canada,CA,CAN,Québec,,1273,1124705411
+Mont-Laurier,Mont-Laurier,46.5504,-75.5,Canada,CA,CAN,Québec,,11642,1124355399
+Mistassini,Mistassini,50.4171,-73.8666,Canada,CA,CAN,Québec,,2645,1124591114
+Eastmain,Eastmain,52.2333,-78.5167,Canada,CA,CAN,Québec,,335,1124594875
+Baie-Comeau,Baie-Comeau,49.2227,-68.158,Canada,CA,CAN,Québec,,10435,1124859576
+Natashquan,Natashquan,50.1913,-61.8107,Canada,CA,CAN,Québec,,722,1124631749
+Cap-Chat,Cap-Chat,49.1,-66.6833,Canada,CA,CAN,Québec,,1484,1124662875
+Sherbrooke,Sherbrooke,45.4,-71.9,Canada,CA,CAN,Québec,,139652,1124559506
+Gaspé,Gaspe,48.8373,-64.4934,Canada,CA,CAN,Québec,,3677,1124212754
+St-Augustin,St-Augustin,51.2423,-58.647,Canada,CA,CAN,Québec,,3961,1124425707
+Radisson,Radisson,53.7836,-77.6166,Canada,CA,CAN,Québec,,270,1124508471
+Drummondville,Drummondville,45.8833,-72.4834,Canada,CA,CAN,Québec,,59489,1124624283
+Rivière-du-Loup,Riviere-du-Loup,47.8333,-69.5333,Canada,CA,CAN,Québec,,16403,1124662123
+St.-Jerome,St.-Jerome,45.7666,-74,Canada,CA,CAN,Québec,,78439,1124268324
+Trois-Rivières,Trois Rivieres,46.35,-72.5499,Canada,CA,CAN,Québec,,119693,1124407487
+Amos,Amos,48.5666,-78.1167,Canada,CA,CAN,Québec,,10516,1124939649
+Val d'Or,Val d'Or,48.1166,-77.7666,Canada,CA,CAN,Québec,,20625,1124239138
+Victoriaville,Victoriaville,46.0504,-71.9667,Canada,CA,CAN,Québec,,41500,1124149787
+Kangirsuk,Kangirsuk,60.0248,-69.9991,Canada,CA,CAN,Québec,,549,1124276361
+Shawinigan,Shawinigan,46.5504,-72.7333,Canada,CA,CAN,Québec,,49161,1124441118
+Matagami,Matagami,49.7504,-77.6333,Canada,CA,CAN,Québec,,1966,1124686252
+Rouyn-Noranda,Rouyn-Noranda,48.25,-79.0332,Canada,CA,CAN,Québec,,24602,1124267752
+Montréal,Montreal,45.5,-73.5833,Canada,CA,CAN,Québec,,3678000,1124586170
+Salluit,Salluit,62.1826,-75.6595,Canada,CA,CAN,Québec,,106,1124962070
+Ivugivik,Ivugivik,62.4166,-77.9,Canada,CA,CAN,Québec,,156,1124828045
+Québec,Quebec,46.84,-71.2456,Canada,CA,CAN,Québec,admin,624177,1124823933
+Inukjuak,Inukjuak,58.47,-78.136,Canada,CA,CAN,Québec,,1597,1124369757
+Joliette,Joliette,46.0333,-73.4333,Canada,CA,CAN,Québec,,45361,1124841554
+Sept-Îles,Sept-Iles,50.3161,-66.36,Canada,CA,CAN,Québec,,25686,1124406431

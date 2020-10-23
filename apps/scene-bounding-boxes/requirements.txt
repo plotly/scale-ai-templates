@@ -1,0 +1,8 @@
+dash
+gunicorn
+pandas
+numpy
+dash-bootstrap-components
+opencv-python==4.2.0.34
+Flask-Caching
+requests
