@@ -249,3 +249,18 @@ This template app shows how to query data from a Snowflake Data Warehouse and tr
 Setup instructions [here](apps/explainable-decision-tree/README.md).
 
 ![decision-tree](images/explainable-decision-tree.gif)
+
+## 31. Dash Cytoscape: Leaflet, Context Menu, & Closed Source Network Algorithim 
+This template demonstrates two brand new features for the [Dash Cytoscape](https://github.com/plotly/dash-cytoscape) library. A closed source networking algorithim that interfaces with the two features was also created but is not included in this template. If you are a part of ScaleAI and are curious, please reach out for more information.
+
+The first feature allows users to overlay a Cytoscape graph on top of any [Leaflet](https://leafletjs.com/) supported map, by leveraging the [Leaflet](https://leafletjs.com/) library. This gives users the ability to visualize and interact with network graphs on a map. 
+
+The second feature allows users to right click on a Cytoscape graph and select a menu item, where the logic for the menu item is determined via callback. This means that for all menu items, the business logic is completely determined by the Python developer. Some example uses could be: adding nodes, removing edges, collapsing nodes, and renaming nodes. 
+
+When combining the two features, the user has a powerful way to create, manipulate, and visualize network graphs overlaid over a map.
+
+These features were created in collaboration with [Zyphr Solutions](https://www.zyphr.ca/).
+
+Setup instructions [here](apps/dash-cytoscape-leaflet-menu/README.md).
+
+![dash-cytoscape-leaflet-context](images/dash-cytoscape-leaflet.PNG)
