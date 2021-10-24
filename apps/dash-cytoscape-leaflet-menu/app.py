@@ -8,8 +8,11 @@ from dash.dependencies import Input, Output, State
 import dash_html_components as html
 import dash_cytoscape as cyto
 from dash.exceptions import PreventUpdate
+import pandas as pd
 import plotly.express as px
 import numpy as np
+
+from utils.graph.cytoscape import run_network_algo_cytoscape
 
 # Graph data
 x_data_graph = np.arange(np.datetime64("2020-01-01"), np.datetime64("2020-12-31"))
@@ -18,94 +21,51 @@ y_data_graph = np.random.randint(10, size=len(x_data_graph))
 # App description
 description = dcc.Markdown(
     """ 
-This Dash application contains **2 brand new features** for the [Dash Cytoscape](https://dash.plotly.com/cytoscape) library.
+This Dash application contains **2 brand new features** for the [Dash Cytoscape](https://dash.plotly.com/cytoscape) library
+and **an algorithim** that predicts the connections between various components (poles, transformers, and residential users) in an voltage network.
 
 Features:
 
 1. Leaflet map integration for the [Dash Cytoscape](https://dash.plotly.com/cytoscape) library
 2. Context menu for the [Dash Cytoscape](https://dash.plotly.com/cytoscape) library (try right clicking on the graph)
+3. An algorithim that takes in voltage network data and predicts the connections between the various components (poles, transformers, and residential users).
 
 These features were created in collaboration with [Plotly](https://plotly.com/), [SCALEAI](https://www.scaleai.ca/), and developed by [Zyphr](https://www.zyphr.ca/).
 """
 )
 
-# Cytoscape elements
-elements = [
-    {
-        "data": {
-            "id": "a",
-            "label": "Trois-Rivières",
-            "lat": 46.349998,
-            "lon": -72.550003,
-        }
-    },
-    {"data": {"id": "b", "label": "Montreal", "lat": 45.508888, "lon": -73.561668}},
-    {"data": {"id": "c", "label": "Quebec City", "lat": 46.829853, "lon": -71.254028}},
-    {"data": {"id": "d", "label": "Gaspé", "lat": 48.833332, "lon": -64.483330}},
-    {"data": {"id": "ab", "source": "a", "target": "b"}},
-    {"data": {"id": "ac", "source": "a", "target": "c"}},
-    {"data": {"id": "ad", "source": "a", "target": "d"}},
-]
 
-leaflet = {
+# Cytoscape data graph 1
+LEAFLET_TILE_META = {
     "tileUrl": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}{r}.png",
     "attribution": '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     "maxZoom": 30,
 }
 
-# Cytoscape Data
-algo_data = {
-    "Data Set 1": {
-        "data": elements,
+ALGO_DATA = {
+    "Network 1": {
+        "data": pd.read_csv("data/data.csv", sep=";", index_col=0),
         "leaflet": {
-            **leaflet,
-            "view": [46.829853, -71.254028, 5],
+            **LEAFLET_TILE_META,
+            "view": [45.43331550000074, -73.53991150001814, 15],
         },
     },
-    "Data Set 2": {
-        "data": [
-            {
-                "data": {
-                    "id": "e",
-                    "label": "Laval",
-                    "lat": 45.612499,
-                    "lon": -73.707092,
-                }
-            },
-            {
-                "data": {
-                    "id": "f",
-                    "label": "Gatineau",
-                    "lat": 45.476543,
-                    "lon": -75.701271,
-                }
-            },
-            {"data": {"id": "ef", "source": "e", "target": "f"}},
-        ],
+    "Network 2": {
+        "data": pd.read_csv("data/data2.csv", sep=";", index_col=0),
         "leaflet": {
-            **leaflet,
-            "view": [45.612499, -73.707092, 5],
+            **LEAFLET_TILE_META,
+            "view": [45.434752, -73.53325, 15],
         },
     },
-    "Data Set 3": {
-        "data": [
-            *elements,
-            {
-                "data": {
-                    "id": "f",
-                    "label": "Mont-Tremblant",
-                    "lat": 46.116669,
-                    "lon": -74.599998,
-                }
-            },
-            {"data": {"id": "af", "source": "a", "target": "f"}},
-        ],
+    "Network 3": {
+        "data": pd.read_csv("data/data3.csv", sep=";", index_col=0),
         "leaflet": {
-            **leaflet,
-            "view": [46.349998, -72.550003, 5],
+            **LEAFLET_TILE_META,
+            "view": [45.434447, -73.532785, 15],
         },
     },
 }
+
 cyto.load_extra_layouts()
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
@@ -148,13 +108,16 @@ app.layout = dbc.Container(
                                                 ),
                                                 dcc.Dropdown(
                                                     id="dataset-dropdown",
-                                                    value="Data Set 1",
+                                                    value="Network 1",
                                                     options=[
-                                                        {"label": i, "value": i}
-                                                        for i in [
-                                                            "Data Set 1",
-                                                            "Data Set 2",
-                                                            "Data Set 3",
+                                                        {
+                                                            "label": network,
+                                                            "value": network,
+                                                        }
+                                                        for network in [
+                                                            "Network 1",
+                                                            "Network 2",
+                                                            "Network 3",
                                                         ]
                                                     ],
                                                 ),
@@ -169,13 +132,15 @@ app.layout = dbc.Container(
                 dbc.Col(
                     width=8,
                     children=dbc.Card(
-                        style={"width": "100%"},
+                        style={"width": "100%", "height": "100%"},
                         children=[
                             cyto.Cytoscape(
                                 id="cytoscape",
                                 boxSelectionEnabled=True,
                                 responsive=True,
-                                elements=algo_data["Data Set 1"]["data"],
+                                elements=run_network_algo_cytoscape(
+                                    ALGO_DATA["Network 1"]["data"]
+                                ),
                                 layout={"name": "preset", "padding": 10},
                                 stylesheet=[
                                     {
@@ -275,9 +240,9 @@ app.layout = dbc.Container(
                                 style={
                                     "position": "relative",
                                     "width": "100%",
-                                    "height": "500px",
+                                    "height": "750px",
                                 },
-                                leaflet=leaflet
+                                leaflet=LEAFLET_TILE_META,
                             )
                         ],
                     ),
@@ -313,22 +278,20 @@ app.layout = dbc.Container(
     [Input("cytoscape", "contextmenuData"), Input("dataset-dropdown", "value")],
     [State("cytoscape", "elements"), State("cytoscape", "tapNodeData")],
 )
-def handleCtxmenuReturn(contextmenuData, dataset, elements, tapNodeData):
+def handleCtxmenuReturn(contextmenuData, dataset, elements_cb, tapNodeData):
+    # find input that fired the call back
     ctx = dash.callback_context
     component_id = ctx.triggered[0]["prop_id"].split(".")[0]
 
     # callback for updating dataset in cytoscape graph
     if component_id == "dataset-dropdown":
-        elements = algo_data[dataset]["data"]
-        leaflet = algo_data[dataset]["leaflet"]
-        return elements, leaflet
+        elements_cb = run_network_algo_cytoscape(ALGO_DATA[dataset]["data"])
+        leaflet = ALGO_DATA[dataset]["leaflet"]
+        return elements_cb, leaflet
 
+    # if context menu data is empty prevent callback from firing
     if contextmenuData is None:
         raise PreventUpdate
-
-    # helpful print statements for looking at cytoscape metadata
-    # print("contextMenu data >>>\n", contextmenuData)
-    # print("elements data >>>\n", elements)
 
     context_menu_id = contextmenuData["id"]
 
@@ -336,7 +299,7 @@ def handleCtxmenuReturn(contextmenuData, dataset, elements, tapNodeData):
     if context_menu_id != "AN":
         target_node_id = contextmenuData["target"]["data"]["id"]
 
-    # Add node
+    # add node
     if context_menu_id == "AN":
         target_lat = contextmenuData["coordinates"][0]
         target_lon = contextmenuData["coordinates"][1]
@@ -349,78 +312,38 @@ def handleCtxmenuReturn(contextmenuData, dataset, elements, tapNodeData):
                 "lat": target_lat,
             },
         }
-        elements.append(new_node)
+        elements_cb.append(new_node)
 
-    # Select and connect nodes with an edge
+    # select and connect nodes with an edge
     elif context_menu_id == "SCN":
         if tapNodeData is None:
             raise PreventUpdate
 
         selected_node_id = tapNodeData["id"]
         new_edge = {"data": {"source": selected_node_id, "target": target_node_id}}
-        elements.append(new_edge)
+        elements_cb.append(new_edge)
 
-    # Remove node
+    # remove node
     elif context_menu_id == "RMN":
-        for idx, ele in reversed(list(enumerate(elements))):
+        for idx, ele in reversed(list(enumerate(elements_cb))):
             if "source" in ele["data"]:
                 if target_node_id == ele["data"]["source"]:
-                    elements.pop(idx)
+                    elements_cb.pop(idx)
             else:
                 if target_node_id == ele["data"]["id"]:
-                    elements.pop(idx)
+                    elements_cb.pop(idx)
 
-    # Remove edge
+    # remove edge
     elif context_menu_id == "RME":
         target_edge_id = target_node_id
-        for idx, ele in reversed(list(enumerate(elements))):
+        for idx, ele in reversed(list(enumerate(elements_cb))):
             if "source" in ele["data"]:
                 if target_edge_id == ele["data"]["id"]:
-                    elements.pop(idx)
+                    elements_cb.pop(idx)
                     break
-
-    # # Collapse node on node 'Node A'
-    # elif context_menu_id == "CNJ" and target_node_id == "cp11":
-    #     target_node_id = ["cp11_one", "cp11_two"]
-
-    #     for idx, ele in reversed(list(enumerate(elements))):
-    #         if "source" in ele["data"]:
-    #             if ele["data"]["source"] in target_node_id:
-    #                 elements.pop(idx)
-    #         else:
-    #             if ele["data"]["id"] in target_node_id:
-    #                 elements.pop(idx)
-
-    # # Expand node on node 'cp11'
-    # elif context_menu_id == "ENJ" and target_node_id == "cp11":
-    #     expanded_nodes = [
-    #         {
-    #             "data": {
-    #                 "id": "cp11_one",
-    #                 "label": "Cp11 Node One",
-    #                 "lat": 45.434044907205525,
-    #                 "lon": -73.53985902985069,
-    #             },
-    #         },
-    #         {
-    #             "data": {
-    #                 "id": "cp11_two",
-    #                 "label": "Cp11 Node Two",
-    #                 "lat": 45.434008649176754,
-    #                 "lon": -73.53938293248736,
-    #             },
-    #         },
-    #     ]
-
-    #     expanded_edges = [
-    #         {"data": {"source": "cp11", "target": "cp11_one"}},
-    #         {"data": {"source": "cp11", "target": "cp11_two"}},
-    #     ]
-
-    #     elements = elements + expanded_nodes + expanded_edges
     else:
         raise PreventUpdate
-    return elements, dash.no_update
+    return elements_cb, dash.no_update
 
 
 if __name__ == "__main__":

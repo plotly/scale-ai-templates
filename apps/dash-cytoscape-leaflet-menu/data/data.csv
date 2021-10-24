@@ -1,0 +1,64 @@
+id;point type;lat;lon;root node
+p1;pole;45.433776;-73.53939;-
+p2;pole;45.43367;-73.538999;-
+p3;pole;45.433594;-73.538687;-
+p4;pole;45.433351;-73.538815;-
+p5;pole;45.4331;-73.53894;-
+p6;pole;45.43272;-73.539195;-
+p7;pole;45.43258;-73.539028;-
+p8;pole;45.432463;-73.539309;-
+p9;pole;45.43285;-73.54014;-
+p10;pole;45.433179;-73.539934;-
+p11;pole;45.433361;-73.539904;-
+p12;pole;45.433589;-73.539748;-
+p13;pole;45.433798;-73.539624;-
+t1;transformer;45.433314;-73.53989;-
+t2;transformer;45.432463;-73.53929;-
+t3;transformer;45.432696;-73.53916;-
+t4;transformer;45.43378;-73.53935;-
+t5;transformer;45.432837;-73.54015;-
+t6;transformer;45.433337;-73.53882;-
+cp1;connection point;45.433215;-73.53862;t6
+cp2;connection point;45.433188;-73.539145;t6
+cp3;connection point;45.4331;-73.53869;t6
+cp4;connection point;45.43351;-73.53891;t6
+cp5;connection point;45.433592;-73.53924;t6
+cp6;connection point;45.433905;-73.53919;t6
+cp7;connection point;45.43396;-73.53914;t6
+cp8;connection point;45.433344;-73.53907;t6
+cp9;connection point;45.43352;-73.538984;t6
+cp10;connection point;45.433783;-73.53993;t4
+cp11;connection point;45.434035;-73.53958;t4
+cp12;connection point;45.433836;-73.54011;t4
+cp13;connection point;45.432433;-73.53957;t2
+cp14;connection point;45.4337;-73.53991;t1
+cp15;connection point;45.43347;-73.53957;t1
+cp16;connection point;45.43334;-73.53962;t1
+cp17;connection point;45.433302;-73.540106;t1
+cp18;connection point;45.43354;-73.53999;t1
+cp19;connection point;45.4332;-73.53968;t1
+cp20;connection point;45.433386;-73.54007;t1
+cp21;connection point;45.433596;-73.53952;t1
+cp22;connection point;45.432825;-73.538786;t3
+cp23;connection point;45.43258;-73.538885;t3
+cp24;connection point;45.432925;-73.538756;t3
+cp25;connection point;45.432707;-73.5394;t3
+cp26;connection point;45.433;-73.538725;t3
+cp27;connection point;45.43256;-73.53948;t3
+cp28;connection point;45.433093;-73.53919;t3
+cp29;connection point;45.43271;-73.53884;t3
+cp30;connection point;45.432326;-73.539015;t3
+cp31;connection point;45.432223;-73.538984;t3
+cp32;connection point;45.432467;-73.53885;t3
+cp33;connection point;45.43278;-73.539366;t3
+cp34;connection point;45.432417;-73.53896;t3
+cp35;connection point;45.43269;-73.53934;t3
+cp36;connection point;45.432707;-73.539335;t3
+cp37;connection point;45.433047;-73.53976;t5
+cp38;connection point;45.432864;-73.53985;t5
+cp39;connection point;45.43272;-73.5398;t5
+cp40;connection point;45.43302;-73.54025;t5
+cp41;connection point;45.433154;-73.54021;t5
+cp42;connection point;45.432948;-73.5398;t5
+cp43;connection point;45.43263;-73.53977;t5
+cp44;connection point;45.432692;-73.53991;t5
