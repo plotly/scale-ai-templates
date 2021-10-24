@@ -1,6 +1,6 @@
 # Dash Cytoscape: Leaflet, Context Menu & Algorithim
 
-Dash Cytoscape leaflet and context menu features and an algorithim to predict voltage network node locations. Built in collaboration with Plotly, SCALEAI, and developed by Zyphr.
+Dash Cytoscape leaflet and context menu features and an algorithim to predict voltage network node locations. Built in collaboration with Plotly, SCALEAI, and developed by [Zyphr](https://www.zyphr.ca/).
 
 Dash Cytoscape: https://github.com/plotly/dash-cytoscape
 
@@ -16,7 +16,7 @@ Dash Cytoscape: https://github.com/plotly/dash-cytoscape
 |   app: Dash Cytoscape demo
 |   requirements.txt: Dependencies
 |   README.md: Documentation
-|   dash_cytoscape: Dash Cytoscape library containing the Leaflet and context menu features
+|   dash_cytoscape.tar.gz: Dash Cytoscape library containing the Leaflet and context menu features
 \---utils: Voltage network algorithim
     |   algorithm.py
     |   classes.py
